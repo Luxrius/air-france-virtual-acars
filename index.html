@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Air France Virtual ACARS</title>
+  </head>
+  <body>
+    <div id="app">
+      <header id="app-header">
+        <span id="app-title">AIR FRANCE <em>VIRTUAL</em></span>
+        <span id="status-dot" class="status-dot status-disconnected"></span>
+      </header>
+
+      <section id="screen-login" class="screen">
+        <h1>Pilot Login</h1>
+        <form id="login-form">
+          <label>Email<input type="email" id="login-email" required autocomplete="username" /></label>
+          <label>Password<input type="password" id="login-password" required autocomplete="current-password" /></label>
+          <button type="submit">Log In</button>
+          <p id="login-error" class="error"></p>
+        </form>
+      </section>
+
+      <section id="screen-booking" class="screen hidden">
+        <h1>Select Flight</h1>
+        <div id="booking-list"></div>
+        <div class="divider">or enter manually</div>
+        <form id="manual-form">
+          <label>Flight #<input type="text" id="manual-flightNumber" placeholder="AF008" required /></label>
+          <label>Departure ICAO<input type="text" id="manual-departure" maxlength="4" required /></label>
+          <label>Arrival ICAO<input type="text" id="manual-arrival" maxlength="4" required /></label>
+          <label>Aircraft
+            <select id="manual-aircraft">
+              <option value="A220">A220</option>
+              <option value="A320neo">A320neo</option>
+              <option value="A350">A350</option>
+              <option value="B777">B777</option>
+              <option value="B787">B787</option>
+            </select>
+          </label>
+          <label>Network
+            <select id="manual-network">
+              <option value="VATSIM">VATSIM</option>
+              <option value="IVAO">IVAO</option>
+              <option value="Offline">Offline</option>
+            </select>
+          </label>
+          <label>Required Fuel Reserve (kg)<input type="number" id="manual-reserve" value="2000" required /></label>
+          <label>PAX<input type="number" id="manual-pax" value="0" /></label>
+          <label>Cargo (kg)<input type="number" id="manual-cargo" value="0" /></label>
+          <button type="submit">Start Tracking</button>
+        </form>
+      </section>
+
+      <section id="screen-tracking" class="screen hidden">
+        <h1 id="tracking-route">—</h1>
+        <div class="phase-badge" id="phase-badge">PREFLIGHT</div>
+        <dl class="telemetry-grid">
+          <div><dt>Altitude</dt><dd id="tel-alt">—</dd></div>
+          <div><dt>Ground Speed</dt><dd id="tel-gs">—</dd></div>
+          <div><dt>Vertical Speed</dt><dd id="tel-vs">—</dd></div>
+          <div><dt>Fuel</dt><dd id="tel-fuel">—</dd></div>
+        </dl>
+        <button id="mock-flight-btn" class="secondary">Use Mock Flight (dev)</button>
+      </section>
+
+      <section id="screen-summary" class="screen hidden">
+        <h1>Flight Complete</h1>
+        <dl class="summary-grid" id="summary-grid"></dl>
+        <div id="summary-flags"></div>
+        <label>Remarks<textarea id="summary-remarks" rows="3"></textarea></label>
+        <button id="submit-pirep-btn">Submit PIREP</button>
+        <p id="submit-status"></p>
+      </section>
+
+      <section id="screen-submitted" class="screen hidden">
+        <h1>PIREP Submitted</h1>
+        <p>Your flight has been filed and is pending admin review.</p>
+        <button id="new-flight-btn">Track Another Flight</button>
+      </section>
+    </div>
+    <script type="module" src="/src/renderer.ts"></script>
+  </body>
+</html>

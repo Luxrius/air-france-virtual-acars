@@ -1,0 +1,23 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/recommended",
+    "plugin:import/electron",
+    "plugin:import/typescript"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "ignorePatterns": ["vitest.config.ts", "scripts/**"],
+  "rules": {
+    // This is a small vanilla-DOM renderer where getElementById calls are
+    // matched 1:1 against static ids in index.html — the non-null
+    // assertion is the known-safe, standard idiom here, not a real risk.
+    "@typescript-eslint/no-non-null-assertion": "off"
+  }
+}

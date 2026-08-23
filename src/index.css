@@ -1,0 +1,202 @@
+:root {
+  --navy: #0a1424;
+  --navy-800: #101d33;
+  --paper: #faf9f6;
+  --ink: #12151c;
+  --slate: #5b6472;
+  --hairline: #e3e1d9;
+  --accent: #b91c2b;
+  --accent-dark: #911623;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, "Segoe UI", Inter, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 13px;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+#app-header {
+  background: var(--navy);
+  color: var(--paper);
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  -webkit-app-region: drag;
+}
+
+#app-title em {
+  color: var(--accent);
+  font-style: normal;
+}
+
+.status-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+.status-dot.status-connected { background: #3ba55d; }
+.status-dot.status-connecting { background: #d9a441; }
+.status-dot.status-disconnected { background: #7a7f89; }
+.status-dot.status-error { background: var(--accent); }
+
+.screen {
+  padding: 16px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.screen.hidden {
+  display: none;
+}
+
+h1 {
+  font-size: 15px;
+  margin: 0 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--slate);
+}
+
+input, select, textarea {
+  font: inherit;
+  padding: 7px 8px;
+  border: 1px solid var(--hairline);
+  background: white;
+  color: var(--ink);
+}
+
+button {
+  font: inherit;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 9px 12px;
+  background: var(--navy);
+  color: var(--paper);
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--accent);
+}
+
+button.secondary {
+  background: transparent;
+  color: var(--slate);
+  border: 1px solid var(--hairline);
+  font-size: 10px;
+  margin-top: 16px;
+}
+
+.error {
+  color: var(--accent);
+  font-size: 11px;
+}
+
+.divider {
+  text-align: center;
+  color: var(--slate);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 14px 0;
+}
+
+.booking-item {
+  border: 1px solid var(--hairline);
+  padding: 10px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.booking-item:hover {
+  border-color: var(--navy);
+}
+
+.phase-badge {
+  display: inline-block;
+  background: var(--navy);
+  color: var(--paper);
+  padding: 5px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  margin-bottom: 14px;
+}
+
+.telemetry-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 0;
+}
+.telemetry-grid dt {
+  font-size: 10px;
+  color: var(--slate);
+  text-transform: uppercase;
+}
+.telemetry-grid dd {
+  margin: 2px 0 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 0 0 14px;
+}
+.summary-grid dt {
+  font-size: 10px;
+  color: var(--slate);
+  text-transform: uppercase;
+}
+.summary-grid dd {
+  margin: 2px 0 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.flag {
+  background: #fdf1ee;
+  color: var(--accent-dark);
+  border-left: 3px solid var(--accent);
+  padding: 6px 8px;
+  font-size: 11px;
+  margin-bottom: 6px;
+}
