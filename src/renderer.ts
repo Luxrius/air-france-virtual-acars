@@ -37,6 +37,16 @@ let vatsimWatcher: VatsimConnectionWatcher | null = null;
 
 // ---- Auth -----------------------------------------------------------------
 
+// The AFV Installer passes the signed-in pilot's email as a launch arg so
+// they don't have to retype it here — password still has to be entered the
+// first time, but Firebase's own session persistence keeps them signed in
+// on every launch after that, from either the installer or this app directly.
+if (window.launch.prefillEmail) {
+  const emailInput = document.getElementById("login-email") as HTMLInputElement;
+  emailInput.value = window.launch.prefillEmail;
+  document.getElementById("login-password")?.focus();
+}
+
 watchAuthState(async (user) => {
   if (!user) {
     showScreen("login");

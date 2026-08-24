@@ -20,3 +20,17 @@ const telemetryApi = {
 contextBridge.exposeInMainWorld("telemetry", telemetryApi);
 
 export type TelemetryApi = typeof telemetryApi;
+
+// The AFV Installer launcher, when it launches this app on behalf of an
+// already-signed-in pilot, passes their email as a plain launch argument so
+// the login screen can be pre-filled — never a password or token, so there's
+// nothing sensitive in this handoff. Falls back to null when run any other
+// way (built .exe double-clicked directly, npm start, etc.).
+const prefillEmailArg = process.argv.find((arg) => arg.startsWith("--prefill-email="));
+const launchApi = {
+  prefillEmail: prefillEmailArg ? decodeURIComponent(prefillEmailArg.slice("--prefill-email=".length)) : null,
+};
+
+contextBridge.exposeInMainWorld("launch", launchApi);
+
+export type LaunchApi = typeof launchApi;
