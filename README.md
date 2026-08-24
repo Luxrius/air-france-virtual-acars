@@ -4,14 +4,6 @@ A free, open-source, self-hosted flight-tracking ("ACARS") desktop client for Mi
 
 **Companion project to** [`air-france-virtual`](../air-france-virtual) (the web portal). They share one Firebase project.
 
-## Cost
-
-$0 beyond what the web portal already costs to run.
-
-- SimConnect (MSFS's telemetry API) — free, part of the sim.
-- [`node-simconnect`](https://github.com/EvenAR/node-simconnect) — a pure-TypeScript, cross-platform SimConnect client. **License note**: it's LGPL-3.0-or-later, not MIT — fine for a project built and distributed as open source like this one, since it's used as an ordinary npm dependency (not modified/statically embedded).
-- Electron — free, open source.
-- Writes directly to the portal's existing Firebase project via the standard client SDK and security rules — no service account, no server function, Spark (free) tier plan is enough for hobby-VA PIREP volume.
 
 ## Requirements to actually fly with it
 
